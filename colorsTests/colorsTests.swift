@@ -6,31 +6,60 @@
 //  Copyright © 2017 Mitch Clutter. All rights reserved.
 //
 
-import XCTest
+import Quick
+import Nimble
 @testable import colors
 
-class colorsTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+class colorsTests: QuickSpec {
+    override func spec() {
+        var subject: ViewController!
+        
+        func postSizeChange(_ fontSize: UIContentSizeCategory) {
+            NotificationCenter.default.post(
+                name: NSNotification.Name.UIContentSizeCategoryDidChange,
+                object: nil,
+                userInfo: [UIContentSizeCategoryNewValueKey: fontSize])
+        }
+        
+        beforeEach {
+            super.setUp()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            subject = storyboard.instantiateInitialViewController() as! ViewController
+            expect(subject.view).notTo(beNil())
+            postSizeChange(UIContentSizeCategory.extraSmall)
+        }
+        
+        describe("Body Style Labels") {
+            it("it can increase the size of the label when notified") {
+                let previousFontSize = subject.body.font.pointSize
+                
+                postSizeChange(UIContentSizeCategory.accessibilityExtraExtraExtraLarge)
+                
+                let newFontSize = subject.body.font.pointSize
+                
+                expect(newFontSize).to(beGreaterThan(previousFontSize))
+            }
         }
     }
+    
+    
+//    func testBodyStyleLabelsDecreasesInSizeWhenNotified() {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let subject = storyboard.instantiateInitialViewController() as! ViewController
+//        
+//        NotificationCenter.default.post(
+//            name: NSNotification.Name.UIContentSizeCategoryDidChange,
+//            object: UIContentSizeCategory.accessibilityExtraExtraLarge)
+//        
+//        expect(subject.view).notTo(beNil())
+//        
+//        let fontSizeLabel = subject.body.font.pointSize
+//        
+//        NotificationCenter.default.post(
+//            name: NSNotification.Name.UIContentSizeCategoryDidChange,
+//            object: UIContentSizeCategory.accessibilityMedium)
+//        
+//        expect(subject.body.font.pointSize).to(beLessThan(fontSizeLabel))
+//    }
     
 }
