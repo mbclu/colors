@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,54 +22,119 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="body" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDy-cM-h7P">
-                                <rect key="frame" x="106" y="67" width="162" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" hint="This is the System Font Label" identifier="sfl" label="systemFontLabel">
-                                    <accessibilityTraits key="traits" none="YES"/>
-                                    <bool key="isElement" value="YES"/>
-                                </accessibility>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRk-Bc-Wce">
-                                <rect key="frame" x="164" y="151" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" hint="Speak Out Loud" identifier="button" label="button"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cB3-5s-Csy">
-                                <rect key="frame" x="67" y="269" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="customFontLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWX-KI-U3V">
-                                <rect key="frame" x="100" y="110" width="174" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" label="customLabel">
-                                    <accessibilityTraits key="traits" none="YES"/>
-                                </accessibility>
-                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jpH-Kd-6WQ">
-                                <rect key="frame" x="67" y="396" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xl7-Jx-a6a">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="body" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDy-cM-h7P">
+                                        <rect key="frame" x="20" y="20" width="335" height="21"/>
+                                        <accessibility key="accessibilityConfiguration" hint="This is the System Font Label" identifier="sfl" label="systemFontLabel">
+                                            <accessibilityTraits key="traits" none="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRk-Bc-Wce">
+                                        <rect key="frame" x="20" y="155" width="327" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Speak Out Loud" identifier="button" label="button">
+                                            <accessibilityTraits key="traits" button="YES" playsSound="YES"/>
+                                        </accessibility>
+                                        <state key="normal" title="Change font size"/>
+                                        <connections>
+                                            <action selector="changeFontSize:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qO9-jc-1BL"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cB3-5s-Csy">
+                                        <rect key="frame" x="20" y="372" width="335" height="64"/>
+                                        <color key="backgroundColor" red="0.49411764705882355" green="0.72549019607843135" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="sjr-eF-QEN"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="customFontLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWX-KI-U3V">
+                                        <rect key="frame" x="20" y="57" width="335" height="28"/>
+                                        <accessibility key="accessibilityConfiguration" label="customLabel">
+                                            <accessibilityTraits key="traits" none="YES"/>
+                                        </accessibility>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input the size: UICTContentSizeCategoryXXXL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pbj-rU-0mz">
+                                        <rect key="frame" x="20" y="117" width="335" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bud-Hz-pKc">
+                                        <rect key="frame" x="20" y="201" width="335" height="155"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="155" id="Rbk-SL-kgR"/>
+                                        </constraints>
+                                        <string key="text">Personas venture capital latte integrate fund SpaceTeam cortado workflow. Bootstrapping paradigm convergence driven driven parallax fund long shadow moleskine paradigm earned media pivot agile pair programming. User story pitch deck physical computing entrepreneur pivot entrepreneur quantitative vs. qualitative earned media grok.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jpH-Kd-6WQ">
+                                        <rect key="frame" x="20" y="452" width="335" height="64"/>
+                                        <color key="backgroundColor" red="0.85490196078431369" green="0.16078431372549018" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="cW3-WN-KxF"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="cB3-5s-Csy" secondAttribute="trailing" constant="12" id="1PT-UH-XBG"/>
+                                    <constraint firstItem="UDy-cM-h7P" firstAttribute="top" secondItem="xl7-Jx-a6a" secondAttribute="top" constant="20" id="2Ex-Ys-fcg"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Pbj-rU-0mz" secondAttribute="trailing" constant="12" id="5Ke-yW-4X7"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="TWX-KI-U3V" secondAttribute="trailing" constant="12" id="6Ge-FT-bO7"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="sRk-Bc-Wce" secondAttribute="trailing" constant="20" id="98L-yz-a6d"/>
+                                    <constraint firstItem="UDy-cM-h7P" firstAttribute="leading" secondItem="xl7-Jx-a6a" secondAttribute="leadingMargin" constant="12" id="F8z-4s-zYg"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="jpH-Kd-6WQ" secondAttribute="trailing" constant="12" id="HMt-mq-KHi"/>
+                                    <constraint firstItem="sRk-Bc-Wce" firstAttribute="leading" secondItem="xl7-Jx-a6a" secondAttribute="leadingMargin" constant="12" id="HZ3-Wc-gLX"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="UDy-cM-h7P" secondAttribute="trailing" constant="12" id="KOa-iT-Cuh"/>
+                                    <constraint firstItem="bud-Hz-pKc" firstAttribute="leading" secondItem="xl7-Jx-a6a" secondAttribute="leadingMargin" constant="12" id="Kb5-hM-cH8"/>
+                                    <constraint firstItem="UDy-cM-h7P" firstAttribute="centerX" secondItem="xl7-Jx-a6a" secondAttribute="centerX" id="SDm-lO-37E"/>
+                                    <constraint firstItem="jpH-Kd-6WQ" firstAttribute="top" secondItem="cB3-5s-Csy" secondAttribute="bottom" constant="16" id="ScR-fe-LQJ"/>
+                                    <constraint firstItem="TWX-KI-U3V" firstAttribute="top" secondItem="UDy-cM-h7P" secondAttribute="bottom" constant="16" id="TPy-jJ-to5"/>
+                                    <constraint firstItem="cB3-5s-Csy" firstAttribute="leading" secondItem="xl7-Jx-a6a" secondAttribute="leadingMargin" constant="12" id="TV0-0x-tXA"/>
+                                    <constraint firstItem="TWX-KI-U3V" firstAttribute="leading" secondItem="xl7-Jx-a6a" secondAttribute="leadingMargin" constant="12" id="XAq-29-amD"/>
+                                    <constraint firstItem="sRk-Bc-Wce" firstAttribute="top" secondItem="Pbj-rU-0mz" secondAttribute="bottom" constant="8" id="YBK-ex-qfn"/>
+                                    <constraint firstItem="Pbj-rU-0mz" firstAttribute="leading" secondItem="xl7-Jx-a6a" secondAttribute="leadingMargin" constant="12" id="Zxv-gn-7a2"/>
+                                    <constraint firstItem="bud-Hz-pKc" firstAttribute="top" secondItem="sRk-Bc-Wce" secondAttribute="bottom" constant="16" id="eRr-UJ-QwS"/>
+                                    <constraint firstItem="jpH-Kd-6WQ" firstAttribute="leading" secondItem="xl7-Jx-a6a" secondAttribute="leadingMargin" constant="12" id="iFJ-9d-Z1g"/>
+                                    <constraint firstItem="Pbj-rU-0mz" firstAttribute="top" secondItem="TWX-KI-U3V" secondAttribute="bottom" constant="32" id="lNO-ot-Rqn"/>
+                                    <constraint firstAttribute="bottom" secondItem="jpH-Kd-6WQ" secondAttribute="bottom" constant="20" id="rzF-jf-1yp"/>
+                                    <constraint firstItem="cB3-5s-Csy" firstAttribute="top" secondItem="bud-Hz-pKc" secondAttribute="bottom" constant="16" id="rzV-Rs-Eu3"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="bud-Hz-pKc" secondAttribute="trailing" constant="12" id="vWK-Bd-FFp"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="xl7-Jx-a6a" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="6Zm-fz-Edy"/>
+                            <constraint firstItem="xl7-Jx-a6a" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="8vF-Qd-ooJ"/>
+                            <constraint firstItem="xl7-Jx-a6a" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Kd2-Iv-c8T"/>
+                            <constraint firstItem="xl7-Jx-a6a" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sOw-U0-Siy"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="body" destination="UDy-cM-h7P" id="2zA-b8-wgZ"/>
                         <outlet property="customFontLable" destination="TWX-KI-U3V" id="AKY-lj-Bvb"/>
+                        <outlet property="textField" destination="Pbj-rU-0mz" id="hw4-Ak-RKW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+            <point key="canvasLocation" x="-279.19999999999999" y="-66.11694152923539"/>
         </scene>
     </scenes>
 </document>

@@ -14,7 +14,7 @@ class colorsTests: QuickSpec {
     override func spec() {
         var subject: ViewController!
         
-        func postSizeChange(_ fontSize: UIContentSizeCategory) {
+        func postSizeChange(_ fontSize: String) {
             NotificationCenter.default.post(
                 name: NSNotification.Name.UIContentSizeCategoryDidChange,
                 object: nil,
@@ -26,40 +26,30 @@ class colorsTests: QuickSpec {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             subject = storyboard.instantiateInitialViewController() as! ViewController
             expect(subject.view).notTo(beNil())
-            postSizeChange(UIContentSizeCategory.extraSmall)
         }
         
         describe("Body Style Labels") {
+            beforeEach {
+                postSizeChange("UICTContentSizeCategoryM")
+                expect(subject.body.font.pointSize).toEventually(beCloseTo(16.0), timeout: 1)
+            }
+            
             it("it can increase the size of the label when notified") {
                 let previousFontSize = subject.body.font.pointSize
                 
-                postSizeChange(UIContentSizeCategory.accessibilityExtraExtraExtraLarge)
+                postSizeChange("UICTContentSizeCategoryXXXL")
                 
-                let newFontSize = subject.body.font.pointSize
+                expect(subject.body.font.pointSize).toEventually(beGreaterThan(previousFontSize), timeout: 1)
+            }
+            
+            it("it can decrease the size of the label when notified") {
+                let previousFontSize = subject.body.font.pointSize
                 
-                expect(newFontSize).to(beGreaterThan(previousFontSize))
+                postSizeChange("UICTContentSizeCategoryXS")
+                
+                expect(subject.body.font.pointSize).toEventually(beLessThan(previousFontSize), timeout: 1)
             }
         }
     }
-    
-    
-//    func testBodyStyleLabelsDecreasesInSizeWhenNotified() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let subject = storyboard.instantiateInitialViewController() as! ViewController
-//        
-//        NotificationCenter.default.post(
-//            name: NSNotification.Name.UIContentSizeCategoryDidChange,
-//            object: UIContentSizeCategory.accessibilityExtraExtraLarge)
-//        
-//        expect(subject.view).notTo(beNil())
-//        
-//        let fontSizeLabel = subject.body.font.pointSize
-//        
-//        NotificationCenter.default.post(
-//            name: NSNotification.Name.UIContentSizeCategoryDidChange,
-//            object: UIContentSizeCategory.accessibilityMedium)
-//        
-//        expect(subject.body.font.pointSize).to(beLessThan(fontSizeLabel))
-//    }
     
 }
